@@ -274,7 +274,7 @@ void gr_texticon(int x, int y, gr_surface icon) {
     gl->recti(gl, x, y, x+gr_get_width(icon), y+gr_get_height(icon));
 }
 
-void gr_fill(int x, int y, int w, int h)
+void gr_fill(int x1, int y1, int x2, int y2)
 {
     GGLContext *gl = gr_context;
     gl->disable(gl, GGL_TEXTURE_2D);
