@@ -36,7 +36,7 @@
 #include "font_10x18.h"
 #endif
 
-#include "minui.h"
+#include "../minui/minui.h"
 
 #if defined(RECOVERY_BGRA)
 #define PIXEL_FORMAT GGL_PIXEL_FORMAT_BGRA_8888
