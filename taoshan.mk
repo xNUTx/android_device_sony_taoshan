@@ -152,6 +152,16 @@ PRODUCT_PACKAGES += \
     setup_fs \
     e2fsck
 
+# GPS-1
+PRODUCT_PACKAGES += \
+    gps.msm8960
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf \
+    $(LOCAL_PATH)/gps/sec_config:system/etc/sec_config
+
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
     persist.radio.apm_sim_not_pwdn=1 \
@@ -184,8 +194,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     lpa.use-stagefright=true \
     audio.gapless.playback.disable=true
 
+# GPS-2	
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.gps.qmienabled=true \
+    ro.gps.agps_provider=1
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+    ro.secure=1 \
+    ro.allow.mock.location=0 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 
 
 PRODUCT_GMS_CLIENTID_BASE := android-sonyericsson
 
