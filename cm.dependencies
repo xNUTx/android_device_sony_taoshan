@@ -8,7 +8,7 @@
     "target_path": "device/sony/qcom-common"
   },
   {
-    "repository": "android_kernel_sony_msm8930",
+    "repository": "freexperia/android_kernel_sony_msm8930",
     "target_path": "kernel/sony/msm8930"
   }
 
