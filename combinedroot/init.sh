@@ -27,9 +27,9 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
 # trigger amber LED
-busybox echo 255 > ${BOOTREC_LED_RED}
-busybox echo 0 > ${BOOTREC_LED_GREEN}
-busybox echo 255 > ${BOOTREC_LED_BLUE}
+busybox echo 51 > ${BOOTREC_LED_RED}
+busybox echo 181 > ${BOOTREC_LED_GREEN}
+busybox echo 229 > ${BOOTREC_LED_BLUE}
 
 # keycheck
 busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
@@ -43,9 +43,9 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	busybox echo 0 > /sys/module/msm_fb/parameters/align_buffer
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	# orange led for recoveryboot
-	busybox echo 255 > ${BOOTREC_LED_RED}
-	busybox echo 100 > ${BOOTREC_LED_GREEN}
-	busybox echo 0 > ${BOOTREC_LED_BLUE}
+	busybox echo 131 > ${BOOTREC_LED_RED}
+	busybox echo 229 > ${BOOTREC_LED_GREEN}
+	busybox echo 51 > ${BOOTREC_LED_BLUE}
 	busybox echo 100 > ${BOOTREC_VIBRATOR}
 	# recovery ramdisk
 	busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
