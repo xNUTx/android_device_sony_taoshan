@@ -27,3 +27,11 @@ PRODUCT_NAME := full_taoshan
 PRODUCT_BRAND := Sony
 PRODUCT_MODEL := Xperia L
 PRODUCT_MANUFACTURER := Sony
+
+# Copy prebuilt kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/sony/taoshan/prebuilt/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
