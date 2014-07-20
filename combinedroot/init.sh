@@ -27,6 +27,7 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
 # trigger amber LED
+busybox echo 100 > ${BOOTREC_VIBRATOR}
 busybox echo 51 > ${BOOTREC_LED_RED}
 busybox echo 181 > ${BOOTREC_LED_GREEN}
 busybox echo 229 > ${BOOTREC_LED_BLUE}
@@ -46,7 +47,6 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	busybox echo 131 > ${BOOTREC_LED_RED}
 	busybox echo 229 > ${BOOTREC_LED_GREEN}
 	busybox echo 51 > ${BOOTREC_LED_BLUE}
-	busybox echo 100 > ${BOOTREC_VIBRATOR}
 	# recovery ramdisk
 	busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
 	busybox mount -o remount,rw /
