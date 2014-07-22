@@ -54,6 +54,7 @@
 
 #define NUM_BUFFERS 2
 #define MAX_DISPLAY_DIM  2048
+#define FB_BOUND 0X1000
 
 // #define PRINT_SCREENINFO 1 // Enables printing of screen info to log
 
@@ -288,8 +289,13 @@ static int get_framebuffer(GGLSurface *fb)
 
     fb++;
 
+   unsigned int fb_size = vi.yres * fi.line_length;
+    if (fb_size % FB_BOUND != 0) {
+         fb_size += FB_BOUND - fb_size % FB_BOUND;
+     }
+
     /* check if we can use double buffering */
-    if (vi.yres * fi.line_length * 2 > fi.smem_len)
+    if (fb_size * 2 > fi.smem_len)
         return fd;
 
     double_buffering = 1;
@@ -302,7 +308,7 @@ static int get_framebuffer(GGLSurface *fb)
     fb->data = (void*) (((unsigned) bits) + vi.yres * fi.line_length);
 #else
     fb->stride = vi.xres_virtual;
-    fb->data = (void*) (((unsigned) bits) + vi.yres * fb->stride * PIXEL_SIZE);
+    fb->data = (void*) (((unsigned) bits) + fb_size);
 #endif
     fb->format = PIXEL_FORMAT;
     if (!has_overlay) {
