@@ -19,8 +19,8 @@ include vendor/sony/taoshan/BoardConfigVendor.mk
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
-# inherit from qcom-common
-include device/sony/qcom-common/BoardConfigCommon.mk
+# inherit from msm8960-common
+include device/sony/msm8960-common/BoardConfigCommon.mk
 
 USE_CAMERA_STUB := false
 
@@ -57,8 +57,8 @@ BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
-TARGET_KERNEL_SOURCE := kernel/sony/msm8930
-TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
+#TARGET_KERNEL_SOURCE := kernel/sony/msm8930
+#TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 TARGET_PREBUILT_KERNEL := device/sony/taoshan/kernel
 
 BOARD_USES_QCOM_HARDWARE := true

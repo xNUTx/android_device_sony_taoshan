@@ -1,4 +1,5 @@
-# Copyright (C) 2014 The Android Open Source Project
+#
+# Copyright (C) 2013 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +14,5 @@
 # limitations under the License.
 #
 
-for i in eng userdebug user; do
-    add_lunch_combo full_taoshan-${i}
-    add_lunch_combo cm_taoshan-${i}
-done
+add_lunch_combo cm_taoshan-eng
+add_lunch_combo cm_taoshan-userdebug
