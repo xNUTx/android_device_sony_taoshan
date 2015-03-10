@@ -584,6 +584,20 @@ int twgr_text(int x, int y, const char *s)
     return x;
 }
 
+void gr_clip(int x, int y, int w, int h)
+{
+    GGLContext *gl = gr_context;
+    gl->scissor(gl, x, y, w, h);
+    gl->enable(gl, GGL_SCISSOR_TEST);
+}
+
+void gr_noclip()
+{
+    GGLContext *gl = gr_context;
+    gl->scissor(gl, 0, 0, gr_fb_width(), gr_fb_height());
+    gl->disable(gl, GGL_SCISSOR_TEST);
+}
+
 void gr_fill(int x, int y, int w, int h)
 {
     GGLContext *gl = gr_context;
